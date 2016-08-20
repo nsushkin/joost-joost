@@ -302,18 +302,31 @@ public class Value implements Cloneable
    /**
     * Creates a full copy of the sequence represented by this value.
     */
-   public Value copy()
-   {
-   	Value ret = new Value();
-   	ret.bool = bool;
-   	ret.event = event;
-   	ret.number = number;
-   	ret.object = object;
-   	ret.string = string;
-   	ret.type = type;
-   	if (next != null)
-           ret.next = next.copy();
-   	return ret;
+   public Value copy() {
+       Value valueToCopy=this;
+       Value newValue = new Value();
+       Value ret = newValue;
+       
+       do  {
+           newValue.bool = valueToCopy.bool;
+           newValue.event = valueToCopy.event;
+           newValue.number = valueToCopy.number;
+           newValue.object = valueToCopy.object;
+           newValue.string = valueToCopy.string;
+           newValue.type = valueToCopy.type;
+
+           if (valueToCopy.next != null) {
+               newValue.next = new Value();
+               newValue = newValue.next;
+               valueToCopy = valueToCopy.next;
+           } else {
+               newValue.next = null;
+               break;
+           }
+       }
+       while (true);
+       
+       return ret;
    }
 
    /**
