@@ -115,7 +115,7 @@
   <target name="maketests" depends="compile"
     description="compiles the java sources from the test subdirectory">
     <javac debug="on" srcdir="${src.test}" source="1.4" target="1.4"
-           destdir="${classes}" classpathref="cp" />
+           destdir="${classes}" classpathref="cp" encoding="iso-8859-1"/>
   </target>
 
   
@@ -169,7 +169,6 @@
     <replace file="doc/index.html" token="@@@DATE@@@" value="${date.today}" />
     <replace file="doc/index.html" token="@@@VERSION@@@" value="${joost.version}" />
     <javadoc sourcepath="${src}" destdir="${doc}/api"
-             link="http://java.sun.com/j2se/1.4.2/docs/api"
              packagenames="net.sf.joost, net.sf.joost.instruction,
                            net.sf.joost.stx, net.sf.joost.stx.helpers,
                            net.sf.joost.emitter, net.sf.joost.grammar,
@@ -177,6 +176,7 @@
                            net.sf.joost.trace, net.sf.joost.trax"
              windowtitle="Joost API documentation" private="true"
              breakiterator="true">
+      <link offline="true" href="http://docs.oracle.com/javase/7/docs/api/" packagelistLoc="javadoc/javase7/package-list" />
       <classpath refid="cp" />
     </javadoc>
   </target>

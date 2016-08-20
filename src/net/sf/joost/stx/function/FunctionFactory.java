@@ -311,7 +311,7 @@ final public class FunctionFactory implements Constants
       }
       catch (Exception e) {
          throw new SAXParseException("Exception while creating scripting "
-               + "engine for prefix ´" + nsPrefix + "' and language '"
+               + "engine for prefix '" + nsPrefix + "' and language '"
                + scriptElement.getLang() + "'", scriptElement.publicId,
                scriptElement.systemId, scriptElement.lineNo,
                scriptElement.colNo, e);
